@@ -1,5 +1,12 @@
-// Global variables
-const drumsInstruments = ["Kick", "Snare", "Hihat", "Tom", "Clap", "Crash"]
+var num = window.prompt("Número de instrumentos: ");
+var contWhile = 0;
+var drumsInstruments = []
+while (contWhile < num)
+{
+	drumsInstruments.push(window.prompt("Instrumento: "))
+	contWhile++;
+}
+
 var padStates = new Array(drumsInstruments.length * 16).fill(false);
 var drumPads;
 
