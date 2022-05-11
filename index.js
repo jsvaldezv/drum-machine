@@ -18,8 +18,8 @@ function addListeners()
 	{
 		drumPads[i].addEventListener('click', function()
 		{
-			let pad = this.nextElementSibling;
-			console.log('Pad: ', pad);
+			let pad = this;
+			pad.style.backgroundColor = "rgba(0, 0, 0, 0.8)";
 		});
 	}
 }
