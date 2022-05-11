@@ -1,7 +1,11 @@
+// GLOBAL VARIABLES
 var num = window.prompt("Número de instrumentos: ");
 var contWhile = 0;
+var drumPads;
 var drumsInstruments = []
 var padStates = []
+
+// ADD INSTRUMENTS FOR DRUM MACHINE
 while (contWhile < num)
 {
 	drumsInstruments.push(window.prompt("Instrumento: "))
@@ -12,9 +16,7 @@ while (contWhile < num)
 	contWhile++;
 }
 
-console.log(padStates);
-var drumPads;
-
+// ADD LISTENERS
 function addListeners()
 {
 	drumPads = document.querySelectorAll(".drumPad");
@@ -23,6 +25,7 @@ function addListeners()
 		drumPads[i].addEventListener('click', changePadState(i) );
 }
 
+// LISTENER FUNCTION TO CHANGE STATE
 const changePadState = (inIndex) => {
 	return (e) => {
 
@@ -39,6 +42,7 @@ const changePadState = (inIndex) => {
   }
 }
 
+// GETTER METHOD TO GET ONE INSTRUMENT LINE
 function getDrumLine(inInstrument)
 {
 	var drumLine = document.createElement('div');
@@ -52,6 +56,7 @@ function getDrumLine(inInstrument)
 	return drumLine;
 }
 
+// CREATE DRUM MACHINE ARRANGEMENT
 function createDrumMachine()
 {
 	const drumsContainer = document.querySelector('.drumContainer');
@@ -62,4 +67,5 @@ function createDrumMachine()
 	addListeners();
 }
 
+// EXECUTE FUNCTION ON LOADING
 window.onload = createDrumMachine;
