@@ -1,13 +1,18 @@
 var num = window.prompt("Número de instrumentos: ");
 var contWhile = 0;
 var drumsInstruments = []
+var padStates = []
 while (contWhile < num)
 {
 	drumsInstruments.push(window.prompt("Instrumento: "))
+
+	for (var i = 0; i < 16; i++)
+		padStates.push(false);
+	
 	contWhile++;
 }
 
-var padStates = new Array(drumsInstruments.length * 16).fill(false);
+console.log(padStates);
 var drumPads;
 
 function addListeners()
@@ -15,13 +20,23 @@ function addListeners()
 	drumPads = document.querySelectorAll(".drumPad");
 
 	for (var i = 0; i < drumPads.length; i++)
-	{
-		drumPads[i].addEventListener('click', function()
-		{
-			let pad = this;
+		drumPads[i].addEventListener('click', changePadState(i) );
+}
+
+const changePadState = (inIndex) => {
+	return (e) => {
+
+		var state = padStates[inIndex];
+		var pad = e.target;
+
+		if(state)
+			pad.style.backgroundColor = "rgba(0, 0, 0, 0.2)";
+		else
 			pad.style.backgroundColor = "rgba(0, 0, 0, 0.8)";
-		});
-	}
+
+		padStates[inIndex] = !state;
+		console.log(padStates);
+  }
 }
 
 function getDrumLine(inInstrument)
@@ -42,10 +57,7 @@ function createDrumMachine()
 	const drumsContainer = document.querySelector('.drumContainer');
 
 	for(var i = 0; i < drumsInstruments.length; i++)
-	{
-		console.log(drumsInstruments[i]);
 		drumsContainer.appendChild(getDrumLine(drumsInstruments[i]));
-	}
 
 	addListeners();
 }
