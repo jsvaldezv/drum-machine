@@ -33,7 +33,6 @@ function getDrumLine(inInstrument)
 	
 	for(let i = 0; i < 16; i++)
 		drumLine.innerHTML += "<div type='button' class='drumPad'></div>";
-	//drumLine.innerHTML += "<div type='button' class=" + "drumPad-" + i + "></div>";
 
 	return drumLine;
 }
