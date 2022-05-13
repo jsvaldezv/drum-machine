@@ -1,21 +1,21 @@
 import Timer from "./timer.js"
 
 // GLOBAL VARIABLES
-var num = window.prompt("Número de instrumentos: ");
-var contWhile = 0;
-var drumPads;
-var drumsInstruments = [];
-var padStates = [];
+let num = window.prompt("Número de instrumentos: ");
+let contWhile = 0;
+let drumPads;
+let drumsInstruments = [];
+let padStates = [];
 
-var bpm = 120;
-var beatsPerMeasure = 4;
+let bpm = 120;
+let beatsPerMeasure = 4;
 
 // ADD INSTRUMENTS FOR DRUM MACHINE
 while (contWhile < num)
 {
 	drumsInstruments.push(window.prompt("Instrumento: "));
 
-	for (var i = 0; i < 16; i++)
+	for (let i = 0; i < 16; i++)
 		padStates.push(false);
 	
 	contWhile++;
@@ -26,7 +26,7 @@ function addListeners()
 {
 	drumPads = document.querySelectorAll(".drumPad");
 
-	for (var i = 0; i < drumPads.length; i++)
+	for (let i = 0; i < drumPads.length; i++)
 		drumPads[i].addEventListener('click', changePadState(i));
 }
 
@@ -34,8 +34,8 @@ function addListeners()
 const changePadState = (inIndex) => {
 	return (e) => {
 
-		var state = padStates[inIndex];
-		var pad = e.target;
+		let state = padStates[inIndex];
+		let pad = e.target;
 
 		if(state)
 			pad.style.backgroundColor = "rgba(0, 0, 0, 0.2)";
@@ -50,7 +50,7 @@ const changePadState = (inIndex) => {
 // GETTER METHOD TO GET ONE INSTRUMENT LINE
 function getDrumLine(inInstrument)
 {
-	var drumLine = document.createElement('div');
+	let drumLine = document.createElement('div');
 	drumLine.className = 'drumLine';
 
 	drumLine.innerHTML = "<div class='drumInstrument'>" + inInstrument + "</div>";
@@ -66,7 +66,7 @@ function createDrumMachine()
 {
 	const drumsContainer = document.querySelector('.drumContainer');
 
-	for(var i = 0; i < drumsInstruments.length; i++)
+	for(let i = 0; i < drumsInstruments.length; i++)
 		drumsContainer.appendChild(getDrumLine(drumsInstruments[i]));
 
 	addListeners();
@@ -81,4 +81,4 @@ function playClick()
 window.onload = createDrumMachine;
 
 const metronome = new Timer(playClick, 60000/bpm, {inmediate: true})
-metronome.start();
+//metronome.start();
