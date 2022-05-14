@@ -168,7 +168,6 @@ body{
 	width: 90%;
 	height: 20px;
 	margin: 20px 0;
-	/* background-color: orange; */
 	display: grid;
 	grid-template-columns: 10% 5.6% 5.6% 5.6% 5.6% 5.6% 5.6% 5.6% 5.6% 5.6% 5.6% 5.6% 5.6% 5.6% 5.6% 5.6% 5.6%;
 }

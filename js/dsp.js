@@ -8,16 +8,18 @@ import Timer from "./timer.js"
 //**************************************** *****INITIAL SELECTORS ************************************/
 const playSelector = document.querySelector(".play");
 const pauseSelector = document.querySelector(".pause");
+const stepsFollow = document.querySelectorAll(".step");
 
 //**************************************** GLOBAL VARIABLES ******************************************/
 let bpm = 120;
 let isRunning = false;
+let stepIndex = 0;
 
 //******************************************** AUDIOS ***********************************************/
 const click = new Audio('assets/audios/click.mp3');
 
 //***************************************** SHOW/HIDE ICONS ******************************************/
-function showHide(inIcons) 
+function showHidePlayIcon(inIcons) 
 {
 	if(inIcons == "play")
 	{
@@ -38,6 +40,24 @@ function showHide(inIcons)
 	}
 }
 
+function clearmoveStepFollow()
+{
+	for(let i = 0; i < stepsFollow.length; i++)
+		stepsFollow[i].style.backgroundColor = "black";
+}
+
+function moveStepFollow()
+{
+
+	clearmoveStepFollow();
+	stepsFollow[stepIndex].style.backgroundColor = "green";
+
+	stepIndex++;
+
+	if(stepIndex >= 16)
+		stepIndex = 0;
+}
+
 function playClick() 
 {
 	click.play();
@@ -47,18 +67,24 @@ function playClick()
 //********************************************* PLAY *************************************************/
 function play()
 {
-	console.log("Click");
-
 	if(!isRunning)
 	{
 		metronome.start();
 		playClick();
-		showHide("stop");
+		moveStepFollow();
+		showHidePlayIcon("stop");
 		isRunning = true;
+
+		console.log("Click", stepIndex);
 	}
 
 	else
+	{
 		playClick();
+		moveStepFollow();
+
+		console.log("Click", stepIndex);
+	}
 }
 
 function stop()
@@ -66,8 +92,11 @@ function stop()
 	if(isRunning)
 	{
 		metronome.stop();
-		showHide("play");
+		showHidePlayIcon("play");
+		clearmoveStepFollow();
+
 		isRunning = false;
+		stepIndex = 0;
 	}
 }
 
