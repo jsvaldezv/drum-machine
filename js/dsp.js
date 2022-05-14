@@ -40,12 +40,14 @@ function showHidePlayIcon(inIcons)
 	}
 }
 
+//*************************************** CLEAR STEP SEQUENCER ******************************************/
 function clearmoveStepFollow()
 {
 	for(let i = 0; i < stepsFollow.length; i++)
 		stepsFollow[i].style.backgroundColor = "black";
 }
 
+//***************************************** MOVE STEP SEQUENCER ******************************************/
 function moveStepFollow()
 {
 
@@ -58,13 +60,14 @@ function moveStepFollow()
 		stepIndex = 0;
 }
 
+//********************************************* PLAY SOUNDS *********************************************/
 function playClick() 
 {
 	click.play();
 	click.currentTime = 0;
 }
 
-//********************************************* PLAY *************************************************/
+//************************************************ PLAY *************************************************/
 function play()
 {
 	if(!isRunning)
@@ -87,6 +90,7 @@ function play()
 	}
 }
 
+//************************************************ STOP ******************************************/
 function stop()
 {
 	if(isRunning)
