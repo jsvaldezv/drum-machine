@@ -12,8 +12,12 @@ const pauseSelector = document.querySelector(".pause");
 //**************************************** GLOBAL VARIABLES ******************************************/
 let bpm = 120;
 let beatsPerMeasure = 4;
+let isRunning = false;
 
-//**************************************** SHOW/HIDE ICONS ******************************************/
+//******************************************** AUDIOS ***********************************************/
+const click = new Audio('assets/audios/click.mp3');
+
+//***************************************** SHOW/HIDE ICONS ******************************************/
 function showHide(inIcons) 
 {
 	if(inIcons == "play")
@@ -35,17 +39,37 @@ function showHide(inIcons)
 	}
 }
 
+function playClick() 
+{
+	click.play();
+	click.currentTime = 0;
+}
+
 //********************************************* PLAY *************************************************/
 function play()
 {
 	console.log("Click");
-	showHide("stop");
-	//metronome.start();
+
+	if(!isRunning)
+	{
+		metronome.start();
+		playClick();
+		showHide("stop");
+		isRunning = true;
+	}
+
+	else
+		playClick();
 }
 
 function stop()
 {
-	showHide("play");
+	if(isRunning)
+	{
+		metronome.stop();
+		showHide("play");
+		isRunning = false;
+	}
 }
 
 //******************************************* CREATE TIMER OBJECT ************************************/
