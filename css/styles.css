@@ -140,9 +140,27 @@ body{
 	cursor: pointer;
 	background-color: rgba(0, 0, 0, 0.4);
 }
-
 .drumPad-active{
 	background: #FF7B5F;
 	width: calc(400% + 22px);
 	height: calc(100% + 0px);
+}
+.show{
+	display: block;
+}
+.hide{
+	display: none;
+}
+.playPause{
+	width: 90%;
+	margin: 10px 0;
+}
+.play, .pause{
+	width: 35px;
+	height: 35px;
+	filter: invert(1);
+}
+.play:hover, .pause:hover{
+	cursor: pointer;
+	filter: invert(0.9);
 }
