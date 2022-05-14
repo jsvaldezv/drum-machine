@@ -11,12 +11,17 @@ const pauseSelector = document.querySelector(".pause");
 const stepsFollow = document.querySelectorAll(".step");
 
 //**************************************** GLOBAL VARIABLES ******************************************/
-let bpm = 120;
+let bpm = 240;
 let isRunning = false;
 let stepIndex = 0;
 
 //******************************************** AUDIOS ***********************************************/
 const click = new Audio('assets/audios/click.mp3');
+const audiosNames = ["kick", "snare", "hihat"];
+
+let audios = []
+for(let i = 0; i < audiosNames.length; i++) 
+	audios.push(new Audio("assets/audios/" + audiosNames[i] + ".wav"));
 
 //***************************************** SHOW/HIDE ICONS ******************************************/
 function showHidePlayIcon(inIcons) 
@@ -50,7 +55,6 @@ function clearmoveStepFollow()
 //***************************************** MOVE STEP SEQUENCER ******************************************/
 function moveStepFollow()
 {
-
 	clearmoveStepFollow();
 	stepsFollow[stepIndex].style.backgroundColor = "green";
 
@@ -61,10 +65,26 @@ function moveStepFollow()
 }
 
 //********************************************* PLAY SOUNDS *********************************************/
-function playClick() 
+function playSounds() 
 {
-	click.play();
-	click.currentTime = 0;
+	let numInstruments = window.glob.length / 16;
+	for(let i = 0; i < numInstruments; i++)
+	{
+		let padInstrumentIndex = (i * 16) + stepIndex;
+		let padState = window.glob[padInstrumentIndex];
+
+		if(padState)
+		{
+			audios[i].play();
+			audios[i].currentTime = 0;
+		}
+	}
+	
+	/*if(padState)
+	{
+		audios[0].play();
+		audios[0].currentTime = 0;
+	}*/
 }
 
 //************************************************ PLAY *************************************************/
@@ -73,7 +93,7 @@ function play()
 	if(!isRunning)
 	{
 		metronome.start();
-		playClick();
+		playSounds();
 		moveStepFollow();
 		showHidePlayIcon("stop");
 		isRunning = true;
@@ -83,7 +103,7 @@ function play()
 
 	else
 	{
-		playClick();
+		playSounds();
 		moveStepFollow();
 
 		console.log("Click", stepIndex);
