@@ -57,6 +57,7 @@ function createDrumMachine()
 	for(let i = 0; i < userSelectChoices.length; i++)
 	{
 		drumsContainer.appendChild(getDrumLine(userSelectChoices[i].value));
+		window.instruments.push(userSelectChoices[i].value);
 		
 		for (let i = 0; i < 16; i++)
 			window.glob.push(false);

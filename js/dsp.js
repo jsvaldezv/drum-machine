@@ -18,7 +18,7 @@ let stepIndex = 0;
 
 //******************************************** AUDIOS ***********************************************/
 const click = new Audio('assets/audios/click.mp3');
-const audiosNames = ["kick", "snare", "hihat"];
+const audiosNames = ["kick", "snare", "hihat", "crash", "clap", "tom", "cowbell"];
 
 let audios = []
 for(let i = 0; i < audiosNames.length; i++) 
@@ -77,8 +77,43 @@ function playSounds()
 
 		if(padState)
 		{
-			audios[i].play();
-			audios[i].currentTime = 0;
+			switch(window.instruments[i])
+			{
+				case "Kick":
+					audios[0].play();
+					audios[0].currentTime = 0;
+					break;
+
+				case "Snare":
+					audios[1].play();
+					audios[1].currentTime = 0;
+					break;
+
+				case "Hihat":
+					audios[2].play();
+					audios[2].currentTime = 0;
+					break;
+				
+				case "Crash":
+					audios[3].play();
+					audios[3].currentTime = 0;
+					break;
+
+				case "Clap":
+					audios[4].play();
+					audios[4].currentTime = 0;
+					break;
+
+				case "Tom":
+					audios[5].play();
+					audios[5].currentTime = 0;
+					break;
+
+				case "Cowbell":
+					audios[6].play();
+					audios[6].currentTime = 0;
+					break;
+			}
 		}
 	}
 }
@@ -93,8 +128,6 @@ function play()
 		moveStepFollow();
 		showHidePlayIcon("stop");
 		isRunning = true;
-
-		console.log("Click", stepIndex);
 	}
 
 	else
