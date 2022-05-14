@@ -11,7 +11,6 @@ const pauseSelector = document.querySelector(".pause");
 
 //**************************************** GLOBAL VARIABLES ******************************************/
 let bpm = 120;
-let beatsPerMeasure = 4;
 let isRunning = false;
 
 //******************************************** AUDIOS ***********************************************/

@@ -54,10 +54,11 @@ function getDrumLine(inInstrument)
 function createDrumMachine()
 {
 	const drumsContainer = document.querySelector('.drumContainer');
+	const userSelectChoices = document.querySelectorAll("#instrument");
 
-	for(let i = 0; i < numInstruments.value; i++)
+	for(let i = 0; i < userSelectChoices.length; i++)
 	{
-		drumsContainer.appendChild(getDrumLine(instrumentsList[i]));
+		drumsContainer.appendChild(getDrumLine(userSelectChoices[i].value));
 		
 		for (let i = 0; i < 16; i++)
 			padStates.push(false);
@@ -78,7 +79,7 @@ function getUserInstrumentChoice(inIndex)
 
 	drumInstrumentChoice.innerHTML = 
 		`<form>
-			<select id="instrument_${inIndex}" name="instrument">
+			<select id="instrument" name="instrument">
 			<option value="${instrumentsList[0]}">${instrumentsList[0]}</option>
 			<option value="${instrumentsList[1]}">${instrumentsList[1]}</option>
 			<option value="${instrumentsList[2]}">${instrumentsList[2]}</option>
