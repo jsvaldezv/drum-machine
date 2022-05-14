@@ -7,8 +7,6 @@ const okNumInstruments = document.querySelector(".okNumInstruments");
 
 //**************************************** GLOBAL VARIABLES ******************************************/
 let instrumentsList = ["Kick", "Snare", "Hihat", "Crash", "Clap", "Tom", "Cowbell"]
-//let padStates = [];
-//padStates.glob = [];
 let drumPads;
 
 //*************************************** ADD LISTENERS TO PADS **************************************/
@@ -23,8 +21,6 @@ function addListeners()
 //********************************* LISTENER FUNCTION TO CHANGE STATE TO PAD *************************/
 const changePadState = (inIndex) => {
 	return (e) => {
-
-		//let state = padStates[inIndex];
 		let state = window.glob[inIndex]
 		let pad = e.target;
 
@@ -33,9 +29,7 @@ const changePadState = (inIndex) => {
 		else
 			pad.style.backgroundColor = "rgba(0, 0, 0, 0.8)";
 
-		//padStates[inIndex] = !state;
 		window.glob[inIndex] = !state;
-		//console.log(padStates);
 		console.log(window.glob);
   }
 }
@@ -66,7 +60,6 @@ function createDrumMachine()
 		
 		for (let i = 0; i < 16; i++)
 			window.glob.push(false);
-			//padStates.push(false);
 	}
 
 	addListeners();

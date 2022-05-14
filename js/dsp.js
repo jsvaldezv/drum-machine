@@ -5,13 +5,14 @@
 //************************************************* IMPORTS ******************************************/
 import Timer from "./timer.js"
 
-//**************************************** *****INITIAL SELECTORS ************************************/
+//********************************************* INITIAL SELECTORS ************************************/
 const playSelector = document.querySelector(".play");
 const pauseSelector = document.querySelector(".pause");
 const stepsFollow = document.querySelectorAll(".step");
 
 //**************************************** GLOBAL VARIABLES ******************************************/
-let bpm = 240;
+let bpm = 120;
+let ms = 60000/bpm;
 let isRunning = false;
 let stepIndex = 0;
 
@@ -68,6 +69,7 @@ function moveStepFollow()
 function playSounds() 
 {
 	let numInstruments = window.glob.length / 16;
+
 	for(let i = 0; i < numInstruments; i++)
 	{
 		let padInstrumentIndex = (i * 16) + stepIndex;
@@ -79,12 +81,6 @@ function playSounds()
 			audios[i].currentTime = 0;
 		}
 	}
-	
-	/*if(padState)
-	{
-		audios[0].play();
-		audios[0].currentTime = 0;
-	}*/
 }
 
 //************************************************ PLAY *************************************************/
@@ -125,7 +121,7 @@ function stop()
 }
 
 //******************************************* CREATE TIMER OBJECT ************************************/
-const metronome = new Timer(play, 60000/bpm, {inmediate: true})
+const metronome = new Timer(play, ms, {inmediate: true})
 
 //******************************************** PLAY LISTENER  ***************************************/
 playSelector.addEventListener('click', play);
