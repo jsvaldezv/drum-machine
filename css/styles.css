@@ -1,20 +1,16 @@
+/* GOOGLE FONTS */
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+
 *{
 	margin: 0;
 	border: 0;
 }
 body{
 	background-color: black;
+	font-family: 'Ubuntu', sans-serif;
 }
 
-.drumUserInfo{
-	width: 100%;
-	height: 100vh;
-	background-color: pink;
-	display: flex;
-	justify-content:center;
-	align-items:center;
-}
-
+/******************************************* TITLE **************************************/
 .drumTitle{
 	width: 100%;
 	height: 10vh;
@@ -22,13 +18,94 @@ body{
 	justify-content: center;
 	align-items: center;
 	color: white;
+	font-size: 30px;
 }
 
+/************************************* NUM INSTRUMENTS *******************************/
+.drumUserInfo{
+	width: 100%;
+	height: 90vh;
+	background-color: pink;
+	display: flex;
+	justify-content:center;
+	align-items:center;
+	flex-direction: column;
+}
+.drumUserInfo label{
+	font-size: 20px;
+}
+.drumUserInfo input{
+	width: 220px;
+	height: 25px;
+	margin: 10px 0 20px 0;
+	background-color:whitesmoke;
+}
+.drumUserInfo input[type=text] {
+	width: 150px;
+	padding: 12px 20px;
+	margin: 8px 0;
+	box-sizing: border-box;
+	border-color: 1px solid black;
+}
+.drumUserInfo div{
+	width: 100px;
+	height: 30px;
+	border-radius: 10px;
+	margin: 20px 0;
+	background-color:whitesmoke;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.drumUserInfo div:hover{
+	cursor: pointer;
+	filter: brightness(0.95);
+}
+
+/************************************* CHOICE INSTRUMENTS *******************************/
+.drumsUserChoice{
+	width: 100%;
+	height: 90vh;
+	background-color: green;
+	display: flex;
+	justify-content:center;
+	align-items:center;
+	flex-direction: column;
+}
+.drumInstrumentChoice select{
+	width: 268px;
+    padding: 5px;
+    font-size: 16px;
+    line-height: 1;
+    border: 0;
+    border-radius: 5px;
+    height: 34px;
+    background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png) no-repeat right #ddd;
+    -webkit-appearance: none;
+    background-position-x: 244px;
+	margin: 20px 0px;
+}
+.okInstrumentChoices{
+	width: 100px;
+	height: 30px;
+	border-radius: 10px;
+	margin: 20px 0;
+	background-color:whitesmoke;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.okInstrumentChoices:hover{
+	cursor: pointer;
+	filter: brightness(0.95);
+}
+
+/************************************ DRUM MACHINE CONTAINER *******************************/
 .drumContainer{
 	width: 100%;
 	height: 90vh;
 	background-color:blue;
-	display: flex;
+	display: none;
 	justify-content:center;
 	flex-direction: column;
 	align-items: center;
@@ -63,9 +140,40 @@ body{
 	cursor: pointer;
 	background-color: rgba(0, 0, 0, 0.4);
 }
-
 .drumPad-active{
 	background: #FF7B5F;
 	width: calc(400% + 22px);
 	height: calc(100% + 0px);
+}
+.show{
+	display: block;
+}
+.hide{
+	display: none;
+}
+.playPause{
+	width: 90%;
+	margin: 10px 0;
+}
+.play, .pause{
+	width: 35px;
+	height: 35px;
+	filter: invert(1);
+}
+.play:hover, .pause:hover{
+	cursor: pointer;
+	filter: invert(0.9);
+}
+.stepFollow{
+	width: 90%;
+	height: 20px;
+	margin: 20px 0;
+	display: grid;
+	grid-template-columns: 10% 5.6% 5.6% 5.6% 5.6% 5.6% 5.6% 5.6% 5.6% 5.6% 5.6% 5.6% 5.6% 5.6% 5.6% 5.6% 5.6%;
+}
+.step{
+	width: 50px;
+    height: 20px;
+    margin: 0px 10px;
+    background-color: black;
 }
