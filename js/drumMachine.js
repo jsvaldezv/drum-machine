@@ -4,6 +4,7 @@
 
 //**************************************** INITIAL SELECTORS *****************************************/
 const okNumInstruments = document.querySelector(".okNumInstruments");
+const letsGo = document.querySelector(".modalCenter_Lets");
 
 //**************************************** GLOBAL VARIABLES ******************************************/
 let instrumentsList = ["Kick", "Snare", "Hihat", "Crash", "Clap", "Tom", "Cowbell"]
@@ -110,5 +111,12 @@ function createInstrumentChoices()
 	okInstrumentChoices.addEventListener('click', createDrumMachine);
 }
 
+function clearInit()
+{
+	const modalWelcome = document.querySelector('.modalWelcome');
+	modalWelcome.style.display = "none";
+}
+
 //******************************* SUBMIT LISTENER TO CREATE DRUM MACHINE ***************************/
 okNumInstruments.addEventListener('click', createInstrumentChoices);
+letsGo.addEventListener('click', clearInit);

@@ -11,7 +11,7 @@ const pauseSelector = document.querySelector(".pause");
 const stepsFollow = document.querySelectorAll(".step");
 
 //**************************************** GLOBAL VARIABLES ******************************************/
-let bpm = 120;
+let bpm = 120 * 4;
 let ms = 60000/bpm;
 let isRunning = false;
 let stepIndex = 0;
