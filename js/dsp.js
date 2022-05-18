@@ -50,14 +50,14 @@ function showHidePlayIcon(inIcons)
 function clearmoveStepFollow()
 {
 	for(let i = 0; i < stepsFollow.length; i++)
-		stepsFollow[i].style.backgroundColor = "black";
+		stepsFollow[i].style.backgroundColor = "var(--blue)";
 }
 
 //***************************************** MOVE STEP SEQUENCER ******************************************/
 function moveStepFollow()
 {
 	clearmoveStepFollow();
-	stepsFollow[stepIndex].style.backgroundColor = "green";
+	stepsFollow[stepIndex].style.backgroundColor = "rgb(42, 231, 255)";
 
 	stepIndex++;
 

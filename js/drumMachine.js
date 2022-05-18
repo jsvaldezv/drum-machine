@@ -28,7 +28,7 @@ const changePadState = (inIndex) => {
 		if(state)
 			pad.style.backgroundColor = "rgba(0, 0, 0, 0.2)";
 		else
-			pad.style.backgroundColor = "rgba(0, 0, 0, 0.8)";
+			pad.style.backgroundColor = "rgb(42, 231, 255)";
 
 		window.glob[inIndex] = !state;
 		console.log(window.glob);

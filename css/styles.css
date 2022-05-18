@@ -73,7 +73,7 @@ body{
 .drumUserInfo{
 	width: 100%;
 	height: 90vh;
-	background-color: white;
+	background-color: var(--bone);
 	display: flex;
 	justify-content:center;
 	align-items:center;
@@ -121,7 +121,7 @@ body{
 .drumsUserChoice{
 	width: 100%;
 	height: 90vh;
-	background-color: green;
+	background-color: var(--bone);
 	display: flex;
 	justify-content:center;
 	align-items:center;
@@ -135,17 +135,19 @@ body{
     border: 0;
     border-radius: 5px;
     height: 34px;
-    background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png) no-repeat right #ddd;
-    -webkit-appearance: none;
+	color: var(--bone);
+	background-color: var(--blue);
     background-position-x: 244px;
 	margin: 20px 0px;
+	border-right: 10px solid transparent
 }
 .okInstrumentChoices{
 	width: 100px;
 	height: 30px;
 	border-radius: 10px;
 	margin: 20px 0;
-	background-color:whitesmoke;
+	background-color:var(--blue);
+	color: var(--bone);
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -159,7 +161,7 @@ body{
 .drumContainer{
 	width: 100%;
 	height: 90vh;
-	background-color:blue;
+	background-color:var(--bone);
 	display: none;
 	justify-content:center;
 	flex-direction: column;
@@ -169,16 +171,18 @@ body{
 .drumLine{
 	width: 90%;
 	height: 10vh;
-	background-color:green;
+	background-color:var(--blue);
 	border: 1px solid black;
 	display: grid;
 	grid-template-columns: 10% 5.6% 5.6% 5.6% 5.6% 5.6% 5.6% 5.6% 5.6% 5.6% 5.6% 5.6% 5.6% 5.6% 5.6% 5.6% 5.6%;
 	align-items:center;
+	margin: 5px 0;
 }
 .drumInstrument{
 	display: flex;
 	justify-content:center;
 	align-items:center;
+	color: var(--bone);
 }
 .drumPad{
 	width: 50px;
@@ -213,11 +217,11 @@ body{
 .play, .pause{
 	width: 35px;
 	height: 35px;
-	filter: invert(1);
+	filter: brightness(0) saturate(100%) invert(45%) sepia(49%) saturate(3062%) hue-rotate(155deg) brightness(93%) contrast(79%);
 }
 .play:hover, .pause:hover{
 	cursor: pointer;
-	filter: invert(0.9);
+	filter: brightness(0) saturate(100%) invert(17%) sepia(87%) saturate(3460%) hue-rotate(173deg) brightness(95%) contrast(101%);
 }
 .stepFollow{
 	width: 90%;
@@ -230,5 +234,6 @@ body{
 	width: 50px;
     height: 20px;
     margin: 0px 10px;
-    background-color: black;
+	border: 1px solid black;
+	background-color:var(--blue);
 }
