@@ -213,6 +213,8 @@ body{
 .playPause{
 	width: 90%;
 	margin: 10px 0;
+	display: flex;
+	justify-content: space-between;
 }
 .play, .pause{
 	width: 35px;
@@ -222,6 +224,37 @@ body{
 .play:hover, .pause:hover{
 	cursor: pointer;
 	filter: brightness(0) saturate(100%) invert(17%) sepia(87%) saturate(3460%) hue-rotate(173deg) brightness(95%) contrast(101%);
+}
+.drumBPM{
+	display: flex;
+	flex-direction: column;
+	justify-content:center;
+	align-items:center;
+	width: 15%;
+}
+.drumBPM h2{
+	margin-bottom: 20px;
+	color: var(--blue);
+}
+.drumBPM-slider{
+	-webkit-appearance: none;  /* Override default CSS styles */
+	appearance: none;
+	width: 100%; /* Full-width */
+	height: 5px; /* Specified height */
+	background: var(--blue); /* Grey background */
+	outline: none; /* Remove outline */
+	opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+	-webkit-transition: .2s; /* 0.2 seconds transition on hover */
+	transition: opacity .2s;
+}
+.drumBPM-slider::-webkit-slider-thumb {
+	-webkit-appearance: none; /* Override default look */
+	appearance: none;
+	width: 18px; /* Set a specific slider handle width */
+	height: 18px; /* Slider handle height */
+	background: var(--blue); /* Green background */
+	cursor: pointer; /* Cursor on hover */
+	border-radius: 20px;
 }
 .stepFollow{
 	width: 90%;

@@ -9,6 +9,7 @@ import Timer from "./timer.js"
 const playSelector = document.querySelector(".play");
 const pauseSelector = document.querySelector(".pause");
 const stepsFollow = document.querySelectorAll(".step");
+const sliderBPM = document.querySelector(".drumBPM-slider");
 
 //**************************************** GLOBAL VARIABLES ******************************************/
 let bpm = 120 * 4;
@@ -63,6 +64,20 @@ function moveStepFollow()
 
 	if(stepIndex >= 16)
 		stepIndex = 0;
+}
+
+//********************************************* UPDATE BPM *********************************************/
+function updateBPM()
+{
+	const newBPM = sliderBPM.value;
+
+	const bpmText = document.querySelector(".drumBPM-text");
+	bpmText.textContent = newBPM;
+	
+	bpm = parseInt(newBPM) * 4;
+	ms = 60000/bpm;
+
+	metronome.timeInterval = ms;
 }
 
 //********************************************* PLAY SOUNDS *********************************************/
@@ -135,7 +150,7 @@ function play()
 		playSounds();
 		moveStepFollow();
 
-		console.log("Click", stepIndex);
+		//console.log("Click", stepIndex);
 	}
 }
 
@@ -159,3 +174,4 @@ const metronome = new Timer(play, ms, {inmediate: true})
 //******************************************** PLAY LISTENER  ***************************************/
 playSelector.addEventListener('click', play);
 pauseSelector.addEventListener('click', stop);
+sliderBPM.addEventListener("input", updateBPM);
