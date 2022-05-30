@@ -2,13 +2,11 @@
 	"name": "Deep House",
 	"id": "deepHouse",
 	"numInstruments": "3",
-	"kick": true,
 	"kickPattern": [true, false, false, false, true, false, false, false, true, false, false, false, true, false, false, false],
-	"snare": true,
 	"snarePattern": [false, false, false, false, true, false, false, false, false, false, false, false, true, false, false, false],
-	"hihat": true,
-	"crash": false,
-	"clap": false,
-	"tom": false,
-	"cowbell": false
+	"hihatPattern": [false, false, true, false, false, false, true, false, false, false, true, false, false, false, true, false],
+	"crashPattern": [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
+	"clapPattern": [false, false, false, false, true, false, false, false, false, false, false, false, true, false, false, false],
+	"tomPattern": [false, false, false, false, false, false, false, false, false, false, false, false, false, false, true, false],
+	"cowbellPattern": [false, false, false, false, false, false, false, false, false, false, false, false, false, true, false, true]
 }

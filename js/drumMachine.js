@@ -75,18 +75,33 @@ function loadPreset()
 {
 	const presetsChoice = document.querySelector('#preset');
 
-	for(let i = 0; i < presets[0].kickPattern.length; i++)
+	for(let i = 0; i < (instrumentsList.length * 16); i++)
 	{
-		const padState = presets[0].kickPattern[i];
+		let padState;
+
+		if(i < 16)
+			padState = presets[0].kickPattern[i];
+
+		else if(i >= 16 && i < 32)
+			padState = presets[0].snarePattern[i-16];
+
+		else if(i >= 32 && i < 48)
+			padState = presets[0].hihatPattern[i-32];
+
+		else if(i >= 48 && i < 64)
+			padState = presets[0].crashPattern[i-48];
+
+		else if(i >= 64 && i < 80)
+			padState = presets[0].clapPattern[i-64];
+
+		else if(i >= 80 && i < 96)
+			padState = presets[0].tomPattern[i-80];
+
+		else if(i >= 96 && i < 112)
+			padState = presets[0].cowbellPattern[i-96];
+
 		window.glob[i] = padState;
 		updatePadState(i, padState);
-	}
-
-	for(let i = 0; i < presets[0].snarePattern.length; i++)
-	{
-		const padState = presets[0].snarePattern[i];
-		window.glob[i+16] = padState;
-		updatePadState(i+16, padState);
 	}
 }
 
