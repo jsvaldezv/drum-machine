@@ -2,6 +2,15 @@
 //****************************************** CREATE DRUM MACHINE *************************************/
 //****************************************************************************************************/
 
+// IMPORT JSON
+//import deepHouse from "../presets/deepHouse.json";
+import deepHousePreset from '../presets/deepHouse.json' assert {type: 'json'};
+import technoPreset from '../presets/techno.json' assert {type: 'json'};
+
+const presets = [];
+presets.push(deepHousePreset);
+presets.push(technoPreset);
+
 //**************************************** INITIAL SELECTORS *****************************************/
 const okNumInstruments = document.querySelector(".okNumInstruments");
 const letsGo = document.querySelector(".modalCenter_Lets");
@@ -35,6 +44,18 @@ const changePadState = (inIndex) => {
   }
 }
 
+function updatePadState(inIndex)
+{
+	drumPads = document.querySelectorAll(".drumPad");
+	let pad = drumPads[inIndex];
+	let state = window.glob[inIndex];
+
+	if(!state)
+		pad.style.backgroundColor = "rgba(0, 0, 0, 0.2)";
+	else
+		pad.style.backgroundColor = "rgb(42, 231, 255)";
+}
+
 //*******************************  GETTER METHOD TO GET ONE INSTRUMENT LINE **************************/ 
 function getDrumLine(inInstrument)
 {
@@ -47,6 +68,41 @@ function getDrumLine(inInstrument)
 		drumLine.innerHTML += "<div type='button' class='drumPad'></div>";
 
 	return drumLine;
+}
+
+//******************************************* LOAD PRESETS *******************************************/ 
+function loadPreset()
+{
+	const presetsChoice = document.querySelector('#preset');
+
+	for(let i = 0; i < presets[0].kickPattern.length; i++)
+	{
+		const padState = presets[0].kickPattern[i];
+		window.glob[i] = padState;
+		updatePadState(i, padState);
+	}
+
+	for(let i = 0; i < presets[0].snarePattern.length; i++)
+	{
+		const padState = presets[0].snarePattern[i];
+		window.glob[i+16] = padState;
+		updatePadState(i+16, padState);
+	}
+}
+
+//************************************** CREATE PRESETS COMBOBOX ************************************/ 
+function createPresets()
+{
+	const presetsContainer = document.querySelector('.presets');
+
+	presetsContainer.innerHTML += 
+		`<form class="presetsChoice">
+			<select id="preset" name="preset">
+			<option value="${presets[0].id}">${presets[0].name}</option>
+			<option value="${presets[1].id}">${presets[1].name}</option>
+		</form>`
+
+	presetsContainer.addEventListener('change', loadPreset);
 }
 
 //*********************************** CREATE DRUM MACHINE ARRANGEMENT *******************************/
@@ -65,6 +121,7 @@ function createDrumMachine()
 	}
 
 	addListeners();
+	createPresets();
 
 	const drumsUserChoice = document.querySelector(".drumsUserChoice");
 	drumsUserChoice.style.display = "none";

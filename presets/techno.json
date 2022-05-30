@@ -1,0 +1,12 @@
+{
+	"name": "Techno",
+	"id": "techno",
+	"numInstruments": "3",
+	"kick": true,
+	"snare": true,
+	"hihat": true,
+	"crash": false,
+	"clap": false,
+	"tom": false,
+	"cowbell": false
+}
