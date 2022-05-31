@@ -18,6 +18,8 @@ const letsGo = document.querySelector(".modalCenter_Lets");
 //**************************************** GLOBAL VARIABLES ******************************************/
 let instrumentsList = ["Kick", "Snare", "Hihat", "Crash", "Clap", "Tom", "Cowbell"]
 let drumPads;
+let createdUser = false;
+let indexPresetGlobal = 0;
 
 //*************************************** ADD LISTENERS TO PADS **************************************/
 function addListeners()
@@ -70,35 +72,54 @@ function getDrumLine(inInstrument)
 	return drumLine;
 }
 
-//******************************************* LOAD PRESETS *******************************************/ 
-function loadPreset()
+//**********************************  UPDATE JSON INDEX PRESETS ***********************************/ 
+function updateIndexPresets()
 {
 	const presetsChoice = document.querySelector('#preset');
 
-	for(let i = 0; i < (instrumentsList.length * 16); i++)
+	switch(presetsChoice.value) 
+	{
+		case "deepHouse":
+			indexPresetGlobal = 0;
+			break;
+
+		case "techno":
+			indexPresetGlobal = 1;
+			break;
+	}
+}
+
+//******************************************* LOAD PRESET *******************************************/ 
+function loadPreset()
+{
+	createdUser = false;
+	createDrumMachine();
+	updateIndexPresets();
+
+	for(let i = 0; i < (presets[indexPresetGlobal].numInstruments * 16); i++)
 	{
 		let padState;
 
 		if(i < 16)
-			padState = presets[0].kickPattern[i];
+			padState = presets[indexPresetGlobal].kickPattern[i];
 
 		else if(i >= 16 && i < 32)
-			padState = presets[0].snarePattern[i-16];
+			padState = presets[indexPresetGlobal].snarePattern[i-16];
 
 		else if(i >= 32 && i < 48)
-			padState = presets[0].hihatPattern[i-32];
+			padState = presets[indexPresetGlobal].hihatPattern[i-32];
 
 		else if(i >= 48 && i < 64)
-			padState = presets[0].crashPattern[i-48];
+			padState = presets[indexPresetGlobal].crashPattern[i-48];
 
 		else if(i >= 64 && i < 80)
-			padState = presets[0].clapPattern[i-64];
+			padState = presets[indexPresetGlobal].clapPattern[i-64];
 
 		else if(i >= 80 && i < 96)
-			padState = presets[0].tomPattern[i-80];
+			padState = presets[indexPresetGlobal].tomPattern[i-80];
 
 		else if(i >= 96 && i < 112)
-			padState = presets[0].cowbellPattern[i-96];
+			padState = presets[indexPresetGlobal].cowbellPattern[i-96];
 
 		window.glob[i] = padState;
 		updatePadState(i, padState);
@@ -109,6 +130,7 @@ function loadPreset()
 function createPresets()
 {
 	const presetsContainer = document.querySelector('.presets');
+	presetsContainer.innerHTML = "";
 
 	presetsContainer.innerHTML += 
 		`<form class="presetsChoice">
@@ -123,20 +145,48 @@ function createPresets()
 //*********************************** CREATE DRUM MACHINE ARRANGEMENT *******************************/
 function createDrumMachine()
 {
+	// CLEAN CURRENT DRUM LINES (IF EXISTS)
+	const drumLine = document.querySelectorAll('.drumLine');
+	if(drumLine != null)
+	{	
+		for(let i = 0; i < drumLine.length; i++)
+			drumLine[i].remove();
+	}
+
+	// CREATE LINES BY USER CHOICE OR BY PRESET
 	const drumsContainer = document.querySelector('.drumContainer');
 	const userSelectChoices = document.querySelectorAll("#instrument");
+	window.instruments = [];
 
-	for(let i = 0; i < userSelectChoices.length; i++)
+	if(createdUser)
 	{
-		drumsContainer.appendChild(getDrumLine(userSelectChoices[i].value));
-		window.instruments.push(userSelectChoices[i].value);
+		for(let i = 0; i < userSelectChoices.length; i++)
+		{
+			drumsContainer.appendChild(getDrumLine(userSelectChoices[i].value));
+			window.instruments.push(userSelectChoices[i].value);
+			
+			for (let i = 0; i < 16; i++)
+				window.glob.push(false);
+		}
 		
-		for (let i = 0; i < 16; i++)
-			window.glob.push(false);
+		createPresets();
+	}
+	else
+	{
+		updateIndexPresets();
+		const numInstruments = presets[indexPresetGlobal].numInstruments;
+
+		for(let i = 0; i < numInstruments; i++)
+		{
+			drumsContainer.appendChild(getDrumLine(presets[indexPresetGlobal].instruments[i]));
+			window.instruments.push(presets[indexPresetGlobal].instruments[i]);
+			
+			for (let i = 0; i < 16; i++)
+				window.glob.push(false);
+		}
 	}
 
 	addListeners();
-	createPresets();
 
 	const drumsUserChoice = document.querySelector(".drumsUserChoice");
 	drumsUserChoice.style.display = "none";
@@ -181,6 +231,7 @@ function createInstrumentChoices()
 
 	const okInstrumentChoices = document.querySelector(".okInstrumentChoices");
 	okInstrumentChoices.addEventListener('click', createDrumMachine);
+	createdUser = true;
 }
 
 function clearInit()

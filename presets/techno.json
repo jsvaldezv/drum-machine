@@ -2,11 +2,8 @@
 	"name": "Techno",
 	"id": "techno",
 	"numInstruments": "3",
-	"kick": true,
-	"snare": true,
-	"hihat": true,
-	"crash": false,
-	"clap": false,
-	"tom": false,
-	"cowbell": false
+	"instruments": ["Kick", "Snare", "Hihat"],
+	"kickPattern": [true, false, false, false, true, false, false, false, true, false, false, false, true, false, false, false],
+	"snarePattern": [false, false, false, false, true, false, false, false, false, false, false, false, true, false, false, false],
+	"hihatPattern": [true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true]
 }
