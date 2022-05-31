@@ -153,6 +153,7 @@ function createPresets()
 		</form>`
 
 	presetsContainer.addEventListener('change', loadPreset);
+	presetsContainer.style.display = "flex";
 }
 
 //*********************************** CREATE DRUM MACHINE ARRANGEMENT *******************************/
@@ -256,3 +257,8 @@ function clearInit()
 //******************************* SUBMIT LISTENER TO CREATE DRUM MACHINE ***************************/
 okNumInstruments.addEventListener('click', createInstrumentChoices);
 letsGo.addEventListener('click', clearInit);
+
+window.onload = () => {
+	const presetsContainer = document.querySelector('.presets');
+	presetsContainer.style.display = "none";
+}
