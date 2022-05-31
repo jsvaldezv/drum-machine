@@ -1,0 +1,9 @@
+{
+	"name": "Init",
+	"id": "init",
+	"numInstruments": "3",
+	"instruments": ["Kick", "Snare", "Hihat"],
+	"kickPattern": [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
+	"snarePattern": [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
+	"hihatPattern": [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
+}

@@ -1,0 +1,9 @@
+{
+	"name": "Regueton",
+	"id": "regueton",
+	"numInstruments": "3",
+	"instruments": ["Kick", "Snare", "Hihat"],
+	"kickPattern": [true, false, false, false, true, false, false, false, true, false, false, false, true, false, false, false],
+	"snarePattern": [false, false, false, true, false, false, true, false, false, false, false, true, false, false, true, false],
+	"hihatPattern": [true, false, true, false, true, false, false, false, true, false, true, false, true, false, false, false]
+}

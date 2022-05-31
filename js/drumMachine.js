@@ -3,13 +3,16 @@
 //****************************************************************************************************/
 
 // IMPORT JSON
-//import deepHouse from "../presets/deepHouse.json";
+import initPreset from '../presets/init.json' assert {type: 'json'};
 import deepHousePreset from '../presets/deepHouse.json' assert {type: 'json'};
 import technoPreset from '../presets/techno.json' assert {type: 'json'};
+import reguetonPreset from '../presets/regueton.json' assert {type: 'json'};
 
 const presets = [];
+presets.push(initPreset);
 presets.push(deepHousePreset);
 presets.push(technoPreset);
+presets.push(reguetonPreset);
 
 //**************************************** INITIAL SELECTORS *****************************************/
 const okNumInstruments = document.querySelector(".okNumInstruments");
@@ -79,12 +82,20 @@ function updateIndexPresets()
 
 	switch(presetsChoice.value) 
 	{
-		case "deepHouse":
+		case "init":
 			indexPresetGlobal = 0;
 			break;
 
-		case "techno":
+		case "deepHouse":
 			indexPresetGlobal = 1;
+			break;
+
+		case "techno":
+			indexPresetGlobal = 2;
+			break;
+
+		case "regueton":
+			indexPresetGlobal = 3;
 			break;
 	}
 }
@@ -137,6 +148,8 @@ function createPresets()
 			<select id="preset" name="preset">
 			<option value="${presets[0].id}">${presets[0].name}</option>
 			<option value="${presets[1].id}">${presets[1].name}</option>
+			<option value="${presets[2].id}">${presets[2].name}</option>
+			<option value="${presets[3].id}">${presets[3].name}</option>
 		</form>`
 
 	presetsContainer.addEventListener('change', loadPreset);
