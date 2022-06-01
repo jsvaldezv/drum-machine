@@ -149,8 +149,6 @@ function play()
 	{
 		playSounds();
 		moveStepFollow();
-
-		//console.log("Click", stepIndex);
 	}
 }
 
