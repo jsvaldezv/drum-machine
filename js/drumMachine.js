@@ -39,10 +39,12 @@ const changePadState = (inIndex) => {
 		let state = window.glob[inIndex]
 		let pad = e.target;
 
-		if(state)
+		/*if(state)
 			pad.style.backgroundColor = "rgba(0, 0, 0, 0.2)";
 		else
-			pad.style.backgroundColor = "rgb(42, 231, 255)";
+			pad.style.backgroundColor = "rgb(42, 231, 255)";*/
+
+		state ? pad.style.backgroundColor = "rgba(0, 0, 0, 0.2)" : pad.style.backgroundColor = "rgb(42, 231, 255)";
 
 		window.glob[inIndex] = !state;
 		console.log(window.glob);
@@ -55,10 +57,12 @@ function updatePadState(inIndex)
 	let pad = drumPads[inIndex];
 	let state = window.glob[inIndex];
 
-	if(!state)
+	/*if(!state)
 		pad.style.backgroundColor = "rgba(0, 0, 0, 0.2)";
 	else
-		pad.style.backgroundColor = "rgb(42, 231, 255)";
+		pad.style.backgroundColor = "rgb(42, 231, 255)";*/
+
+	!state ? pad.style.backgroundColor = "rgba(0, 0, 0, 0.2)" : pad.style.backgroundColor = "rgb(42, 231, 255)";
 }
 
 //*******************************  GETTER METHOD TO GET ONE INSTRUMENT LINE **************************/ 
@@ -143,14 +147,14 @@ function createPresets()
 	const presetsContainer = document.querySelector('.presets');
 	presetsContainer.innerHTML = "";
 
-	presetsContainer.innerHTML += 
-		`<form class="presetsChoice">
-			<select id="preset" name="preset">
-			<option value="${presets[0].id}">${presets[0].name}</option>
-			<option value="${presets[1].id}">${presets[1].name}</option>
-			<option value="${presets[2].id}">${presets[2].name}</option>
-			<option value="${presets[3].id}">${presets[3].name}</option>
-		</form>`
+	const firstPartForm = `<form class="presetsChoice"> <select id="preset" name="preset">`;
+	const thirdPartForm = `</form>`;
+	let secondPartForm = "";
+
+	for(let i = 0; i < presets.length; i++)
+		secondPartForm += `<option value="${presets[i].id}">${presets[i].name}</option>`;
+	
+	presetsContainer.innerHTML += firstPartForm + secondPartForm + thirdPartForm;
 
 	presetsContainer.addEventListener('change', loadPreset);
 	presetsContainer.style.display = "flex";
