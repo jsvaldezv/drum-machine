@@ -16,6 +16,9 @@ body{
 	font-family: 'Ubuntu', sans-serif;
 }
 
+.swal2-styled.swal2-confirm{
+	color: var(--blue) !important;
+}
 /******************************************* TITLE **************************************/
 .drumTitle{
 	width: 100%;

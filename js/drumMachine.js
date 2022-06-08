@@ -39,11 +39,6 @@ const changePadState = (inIndex) => {
 		let state = window.glob[inIndex]
 		let pad = e.target;
 
-		/*if(state)
-			pad.style.backgroundColor = "rgba(0, 0, 0, 0.2)";
-		else
-			pad.style.backgroundColor = "rgb(42, 231, 255)";*/
-
 		state ? pad.style.backgroundColor = "rgba(0, 0, 0, 0.2)" : pad.style.backgroundColor = "rgb(42, 231, 255)";
 
 		window.glob[inIndex] = !state;
@@ -56,11 +51,6 @@ function updatePadState(inIndex)
 	drumPads = document.querySelectorAll(".drumPad");
 	let pad = drumPads[inIndex];
 	let state = window.glob[inIndex];
-
-	/*if(!state)
-		pad.style.backgroundColor = "rgba(0, 0, 0, 0.2)";
-	else
-		pad.style.backgroundColor = "rgb(42, 231, 255)";*/
 
 	!state ? pad.style.backgroundColor = "rgba(0, 0, 0, 0.2)" : pad.style.backgroundColor = "rgb(42, 231, 255)";
 }
@@ -209,6 +199,15 @@ function createDrumMachine()
 	const drumsUserChoice = document.querySelector(".drumsUserChoice");
 	drumsUserChoice.style.display = "none";
 	drumsContainer.style.display = "flex";
+
+	Swal.fire({
+		title: '¡Diviertete!',
+		text: 'Drum Machine creada',
+		padding: '3em',
+		color: 'var(--bone)',
+		background: 'var(--blue)',
+		confirmButtonColor: 'var(--bone)',
+	})
 }
 
 //************************************** GET SELECTOR FOR USER **************************************/

@@ -8,12 +8,13 @@
 	<title>Drum Machine</title>
 
 	<link rel="stylesheet" href="./css/styles.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 
 </head>
 <body>
 
 	<!-- MODAL WELCOME -->
-	<div class="modalWelcome">
+	<div class="modalWelcome wow slideInLeft">
 		<div class="modalCenter">
 			<h2>¡Bienvenido a Drum Machine!</h2>
 			<h3>Por favor, configura tu drum machine</h3>
@@ -24,6 +25,7 @@
 	<!-- TITLE -->
 	<h1 class="drumTitle">Drum Machine</h1>
 
+	<!-- PRESETS -->
 	<div class="presets"></div>
 
 	<!-- DRUM MACHINE -->
@@ -74,6 +76,7 @@
 	<script>  window.instruments = [];  </script>
 	<script src="./js/drumMachine.js" type="module"></script>
 	<script src="./js/dsp.js" type="module"></script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.17/dist/sweetalert2.all.min.js"></script>
 	
 </body>
 </html>
