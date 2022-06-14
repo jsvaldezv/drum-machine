@@ -12,14 +12,14 @@ const presets = [];
 
 for(var i = 0; i < presetNames.length; i++)
 {
-	let path = "/presets/" + presetNames[i]
+	let path = "/DrumMachine/presets/" + presetNames[i]
 	fetch(path)
 		.then( (res) => res.json())
 		.then( (data) => {
 			presets.push(data);
 	});
 }
-
+//https://jsvaldezv.github.io/DrumMachine/presets/init.json
 //**************************************** INITIAL SELECTORS *****************************************/
 const okNumInstruments = document.querySelector(".okNumInstruments");
 const letsGo = document.querySelector(".modalCenter_Lets");
