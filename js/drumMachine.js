@@ -2,13 +2,15 @@
 //****************************************** CREATE DRUM MACHINE *************************************/
 //****************************************************************************************************/
 
-//******************************************* IMPORT JSON PRESETS ************************************/
+//****************************************************************************************************/
+//********************************************** JSON PRESETS ****************************************/
+//****************************************************************************************************/
 const presetNames = ["init.json", "deepHouse.json", "techno.json", "regueton.json"];
 const presets = [];
 
 for(var i = 0; i < presetNames.length; i++)
 {
-	let path = "/DrumMachine/presets/" + presetNames[i]
+	let path = "/presets/" + presetNames[i]
 	fetch(path)
 		.then( (res) => res.json())
 		.then( (data) => {
@@ -25,6 +27,10 @@ let instrumentsList = ["Kick", "Snare", "Hihat", "Crash", "Clap", "Tom", "Cowbel
 let drumPads;
 let createdUser = false;
 let indexPresetGlobal = 0;
+
+//****************************************************************************************************/
+//********************************************* LISTENERS ********************************************/
+//****************************************************************************************************/
 
 //*************************************** ADD LISTENERS TO PADS **************************************/
 function addListeners()
@@ -57,21 +63,11 @@ function updatePadState(inIndex)
 	!state ? pad.style.backgroundColor = "rgba(0, 0, 0, 0.2)" : pad.style.backgroundColor = "rgb(42, 231, 255)";
 }
 
-//*******************************  GETTER METHOD TO GET ONE INSTRUMENT LINE **************************/ 
-function getDrumLine(inInstrument)
-{
-	let drumLine = document.createElement('div');
-	drumLine.className = 'drumLine';
+//****************************************************************************************************/
+//********************************************* PRESETS **********************************************/ 
+//****************************************************************************************************/
 
-	drumLine.innerHTML = "<div class='drumInstrument'>" + inInstrument + "</div>";
-	
-	for(let i = 0; i < 16; i++)
-		drumLine.innerHTML += "<div type='button' class='drumPad'></div>";
-
-	return drumLine;
-}
-
-//**********************************  UPDATE JSON INDEX PRESETS ***********************************/ 
+//**********************************  UPDATE JSON INDEX PRESETS **************************************/ 
 function updateIndexPresets()
 {
 	const presetsChoice = document.querySelector('#preset');
@@ -150,6 +146,24 @@ function createPresets()
 
 	presetsContainer.addEventListener('change', loadPreset);
 	presetsContainer.style.display = "flex";
+}
+
+//****************************************************************************************************/
+//************************************* CREATE DRUM MACHINE HTML *************************************/
+//****************************************************************************************************/
+
+//*******************************  GETTER METHOD TO GET ONE INSTRUMENT LINE **************************/ 
+function getDrumLine(inInstrument)
+{
+	let drumLine = document.createElement('div');
+	drumLine.className = 'drumLine';
+
+	drumLine.innerHTML = "<div class='drumInstrument'>" + inInstrument + "</div>";
+	
+	for(let i = 0; i < 16; i++)
+		drumLine.innerHTML += "<div type='button' class='drumPad'></div>";
+
+	return drumLine;
 }
 
 //*********************************** CREATE DRUM MACHINE ARRANGEMENT *******************************/
@@ -259,7 +273,9 @@ function clearInit()
 	modalWelcome.style.display = "none";
 }
 
-//******************************* SUBMIT LISTENER TO CREATE DRUM MACHINE ***************************/
+//****************************************************************************************************/
+//************************************ CREATE DRUM MACHINE START EVENT *******************************/
+//****************************************************************************************************/
 okNumInstruments.addEventListener('click', createInstrumentChoices);
 letsGo.addEventListener('click', clearInit);
 
