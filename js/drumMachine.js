@@ -2,17 +2,19 @@
 //****************************************** CREATE DRUM MACHINE *************************************/
 //****************************************************************************************************/
 
-// IMPORT JSON
-import initPreset from '../presets/init.json' assert {type: 'json'};
-import deepHousePreset from '../presets/deepHouse.json' assert {type: 'json'};
-import technoPreset from '../presets/techno.json' assert {type: 'json'};
-import reguetonPreset from '../presets/regueton.json' assert {type: 'json'};
-
+//******************************************* IMPORT JSON PRESETS ************************************/
+const presetNames = ["init.json", "deepHouse.json", "techno.json", "regueton.json"];
 const presets = [];
-presets.push(initPreset);
-presets.push(deepHousePreset);
-presets.push(technoPreset);
-presets.push(reguetonPreset);
+
+for(var i = 0; i < presetNames.length; i++)
+{
+	let path = "/DrumMachine/presets/" + presetNames[i]
+	fetch(path)
+		.then( (res) => res.json())
+		.then( (data) => {
+			presets.push(data);
+	});
+}
 
 //**************************************** INITIAL SELECTORS *****************************************/
 const okNumInstruments = document.querySelector(".okNumInstruments");
