@@ -5,4 +5,4 @@ the bpm and steps every instrument follows in real time.
 
 <img width="1392" alt="Screen Shot 2022-06-14 at 12 38 33 a m" src="https://user-images.githubusercontent.com/47612276/173501373-1b4f83a0-bace-4614-af88-d64550b04632.png">
 
-Online demo: https://jsvaldezv.github.io/DrumMachine/
+Demo: https://jsvaldezv.github.io/DrumMachine/
