@@ -2,35 +2,18 @@
 //****************************************** CREATE DRUM MACHINE *************************************/
 //****************************************************************************************************/
 
-//****************************************************************************************************/
-//********************************************** JSON PRESETS ****************************************/
-//****************************************************************************************************/
-
 // Import presets
+import initPreset from '../presets/init.json' with {type: 'json'};
+import deepHousePreset from '../presets/deepHouse.json' with {type: 'json'};
+import technoPreset from '../presets/techno.json' with {type: 'json'};
+import reguetonPreset from '../presets/regueton.json' with {type: 'json'};
+
 const presets = [];
 
-// URLs de los archivos JSON
-const files = [
-    "../presets/init.json",
-    "../presets/deepHouse.json",
-    "../presets/techno.json",
-    "../presets/regueton.json",
-];
-
-Promise.all(files.map((file) => fetch(file).then((res) => res.json())))
-    .then((data) => {
-        // 'data' será un array con los resultados de todos los fetch
-        const [init, deep, techno, regueton] = data;
-
-        presets.push(init);
-        presets.push(deep);
-        presets.push(techno);
-        presets.push(regueton);
-    })
-    .catch((error) => {
-        // Manejar cualquier error en caso de que alguno de los archivos falle
-        console.error("Error cargando los archivos:", error);
-    });
+presets.push(initPreset);
+presets.push(deepHousePreset);
+presets.push(technoPreset);
+presets.push(reguetonPreset);
 
 //**************************************** INITIAL SELECTORS *****************************************/
 const okNumInstruments = document.querySelector(".okNumInstruments");
@@ -222,8 +205,8 @@ function createDrumMachine() {
     drumsContainer.style.display = "flex";
 
     Swal.fire({
-        title: "¡Diviertete!",
-        text: "Drum Machine creada",
+        title: "Have fun!",
+        text: "Drum Machine created",
         padding: "3em",
         color: "var(--bone)",
         background: "var(--blue)",
