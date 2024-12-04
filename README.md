@@ -1,4 +1,6 @@
-# Drum Machine
+# Drum Machine 
+
+### Note: Firefox is not supported
 
 Real time drum machine built with vanilla javascript. It has some preloaded presets and you can also make yours creating a json file. You can change
 the bpm and steps every instrument follows in real time.
