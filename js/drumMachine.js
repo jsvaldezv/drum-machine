@@ -7,10 +7,12 @@
 //****************************************************************************************************/
 
 // IMPORT JSON
-import initPreset from '../presets/init.json' assert {type: 'json'};
-import deepHousePreset from '../presets/deepHouse.json' assert {type: 'json'};
-import technoPreset from '../presets/techno.json' assert {type: 'json'};
-import reguetonPreset from '../presets/regueton.json' assert {type: 'json'};
+import initPreset from '../presets/init.json' with {type: 'json'};
+import deepHousePreset from '../presets/deepHouse.json' with {type: 'json'};
+import technoPreset from '../presets/techno.json' with {type: 'json'};
+import reguetonPreset from '../presets/regueton.json' with {type: 'json'};
+
+console.log ("Hola")
 
 const presets = [];
 presets.push(initPreset);
@@ -271,6 +273,7 @@ function clearInit()
 {
 	const modalWelcome = document.querySelector('.modalWelcome');
 	modalWelcome.style.display = "none";
+    console.log ("Click")
 }
 
 //****************************************************************************************************/
